@@ -1,0 +1,47 @@
+.game-window {
+    height: 600px;
+    width: 800px;
+    margin: 20px auto;
+    background-color: #ddd;
+    position: relative;
+}
+
+.start-screen {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    padding-top: 150px;
+}
+
+.start-screen button {
+    margin-top: 100px;
+}
+
+.stats-section {
+    float: left;
+    margin-left: 20px;
+}
+
+.image-row {
+    clear: left;
+    text-align: center;
+}
+
+.image-row h4 {
+    margin-bottom: 5px;
+}
+
+.image-row img {
+    width: 100px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.image-frame {
+    display: inline-block;
+}
+
+.image-frame p {
+    margin-top: 5px;
+}
+

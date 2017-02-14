@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>TBS</title>
+</head>
+<body>
+    <div class="game-window" id="gameWindow">
+        <div class="start-screen screen" id="startScreen">
+            <h1>Welcome to TBS</h1>
+            <button id="start" onclick="nextScreen()">Start Game</button>
+        </div>
+        <div class="shop-screen screen" id="shopScreen">
+            <div class="stats-section">
+                <h3>Player <span id="playerNumber"></span></h3>
+                <p>Gold Left: <span id="moneyLeftAmt"></span></p>
+            </div>
+            <div class="image-row">
+                <h4>Units on offer</h4>
+                <div class="image-frame">
+                    <img class="soldier" onclick="soldierBuy()" src="images/soldier.png" alt="">
+                    <p>Price: <span id="soldierPrice"></span></p>
+                </div>
+                <div class="image-frame">
+                    <img class="cavalry" onclick="cavalryBuy()" src="images/cavalry.png" alt="">
+                    <p>Price: <span id="cavalryPrice"></span></p>
+                </div>
+                <div class="image-frame">
+                    <img class="archer" onclick="archerBuy()" src="images/archer.png" alt="">
+                    <p>Price: <span id="archerPrice"></span></p>
+                </div>
+                <div class="image-frame">
+                    <img class="cannon" onclick="cannonBuy()" src="images/cannon.png" alt="">
+                    <p>Price: <span id="cannonPrice"></span></p>
+                </div>
+                <div class="image-frame">
+                    <img class="knight" onclick="knightBuy()" src="images/knight.png" alt="">
+                    <p>Price: <span id="knightPrice"></span></p>
+                </div>
+            </div>
+            <div class="image-row">
+                <h4>Units selected</h4>
+                <div class="image-frame">
+                    <img src="images/soldier.png" alt="">
+                    <p id="soldierAmt" class="showAmt">0</p>
+                </div>
+                <div class="image-frame">
+                    <img src="images/cavalry.png" alt="">
+                    <p id="cavalryAmt" class="showAmt">0</p>
+                </div>
+                <div class="image-frame">
+                    <img src="images/archer.png" alt="">
+                    <p id="archerAmt" class="showAmt">0</p>
+                </div>
+                <div class="image-frame">
+                    <img src="images/cannon.png" alt="">
+                    <p id="cannonAmt" class="showAmt">0</p>
+                </div>
+                <div class="image-frame">
+                    <img src="images/knight.png" alt="">
+                    <p id="knightAmt" class="showAmt">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="scripts/collection.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
