@@ -3,7 +3,8 @@
 
 This project comes out of the idea to build a game that is both interesting and challenging to play but also fun to build. It will be team project. 
 
-### Project outline: 
+### Project outline:
+=====
 
 Building a turn based strategy game for 2 players:
 
@@ -32,7 +33,8 @@ Gaining +1atk and +1base hp
 
 The game is won when the last unit of the enemy is defeated. 
 
-##### Project plan: 
+### Project plan: 
+===== 
 
 * Develop data model
 * Develop wireframes
