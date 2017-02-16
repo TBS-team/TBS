@@ -42,12 +42,20 @@ function showScreen() {
     }
 }
 
-function nextScreen() {
+function toShopScreen() {
     changeGameState('shopScreen')
     showScreen()
 }
 
 //SHOP FUNCTIONS
+
+function whichPlayerShops() {
+    if (playerOne.buyActive) {
+        $('#playerNumber').html('1')
+    } else if (playerTwo.buyActive) {
+        $('#playerNumber').html('2')
+    }
+}
 
 function populatePrices() {
     $('#soldierPrice').html(soldierUnit.price)
@@ -60,7 +68,6 @@ function populatePrices() {
     } else if (playerTwo.buyActive) {
         $('#moneyLeftAmt').html(playerTwo.moneyLeft)
     }
-
 }
 
 function soldierBuy() {
@@ -146,18 +153,31 @@ function updateAmountsAndMoney() {
         playerTwo.units.forEach(function (unit) {
             selected[unit.type]++
         })
-        selected.moneyLeft = playerOne.moneyLeft
+        selected.moneyLeft = playerTwo.moneyLeft
     }
     for (key in selected) {
         $('#'+key+'Amt').html(selected[key])
     }
 }
 
+function playerDoneShopping() {
+    if (playerOne.buyActive) {
+        playerOne.buyActive = false
+        console.log(playerOne)
+        console.log(playerTwo)
+        showScreen()
+        whichPlayerShops()
+        updateAmountsAndMoney()
+    } else {
+        playerTwo.buyActive = false
+        console.log(playerTwo)
+        changeGameState('gameScreen')
+        showScreen()
+        whichPlayerShops()
+    }
+}
 
+whichPlayerShops()
+showScreen()
 
-
-
-
-
-
-showScreen();
+//GAME MODE

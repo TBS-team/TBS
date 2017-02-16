@@ -12,7 +12,7 @@
     <div class="game-window" id="gameWindow">
         <div class="start-screen screen" id="startScreen">
             <h1>Welcome to TBS</h1>
-            <button id="start" onclick="nextScreen()">Start Game</button>
+            <button id="start" onclick="toShopScreen()">Start Game</button>
         </div>
         <div class="shop-screen screen" id="shopScreen">
             <div class="stats-section">
@@ -65,6 +65,10 @@
                     <p id="knightAmt" class="showAmt">0</p>
                 </div>
             </div>
+            <button onClick="playerDoneShopping()">Done</button>
+        </div>
+        <div class="game-screen screen" id="gameScreen">
+            Game Screen
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
