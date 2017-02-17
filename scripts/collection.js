@@ -80,3 +80,14 @@ const knightUnit = {
     alive: true,
     price: 1200,
 }
+
+gameSquare = {
+    unitHere: false,
+    obstacleHere: false,
+}
+
+gameSetup = {
+    rows: 20,
+    cols: 20,
+    gameField: [],
+}

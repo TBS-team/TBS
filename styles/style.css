@@ -45,3 +45,24 @@
     margin-top: 5px;
 }
 
+.map {
+    width: 600px;
+    height: 600px;
+}
+
+.cell {
+    height: 30px;
+    width: 30px;
+    float: left;
+    line-height: 0px;
+    box-sizing: border-box;
+    border: 1px solid #333;
+}
+
+.obstacle {
+    background-color: #ccc;
+}
+
+.unit {
+    background-color: #f00;
+}

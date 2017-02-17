@@ -26,7 +26,6 @@ function changeGameState(input) {
 
 function showScreen() {
     $('.screen').hide()
-    console.log(getGameState())
     switch(getGameState()) {
         case 'shopScreen':
             populatePrices()
@@ -181,3 +180,60 @@ whichPlayerShops()
 showScreen()
 
 //GAME MODE
+
+function createGameField() {
+    //create 20 rows and 20 cols
+    for (var i = 0; i < gameSetup.rows; i++) {
+        var row = [];
+        for (var k = 0; k < gameSetup.cols; k++) {
+            row.push(Object.assign(gameSquare))
+        }
+        gameSetup.gameField.push(row)
+    }
+    assignObstacles()
+}
+
+function assignObstacles() {
+    gameSetup.gameField.forEach(function(row) {
+        row.forEach(function(col) {
+            if (Math.random() < 0.1) {
+                col.obstacleHere = true;
+            }
+        })
+    })
+}
+
+//needs to be asynch
+function assignUnits() {
+    playerOne.units.forEach(function(unit) {
+        console.log('called')
+        var randomRow = Math.floor((Math.random * 2) + 1)
+        var randomCol = Math.floor((Math.random * 30) + 1)
+        console.log(randomRow, randomCol)
+        gameSetup.gameField[randomRow][randomCol].unitHere = true;
+    })
+}
+
+function renderGameField() {
+    var fieldToRender = '<div class="map">'
+    gameSetup.gameField.forEach(function(row, rowInd) {
+        row.forEach(function(col, colInd) {
+            if (col.obstacleHere) {
+                fieldToRender += '<div class="obstacle cell" id="' + rowInd + '-' + colInd + '"></div>'
+            // } else if (col.unitHere) {
+            //     fieldToRender += '<div class="unit cell" id="' + rowInd + '-' + colInd + '"></div>'
+            } else {
+                fieldToRender += '<div class="cell" id="' + rowInd + '-' + colInd + '"></div>'
+            }
+        })
+    })
+    fieldToRender += '</div>'
+    $('#gameScreen').append(fieldToRender)
+}
+
+function initialSetup() {
+    createGameField()
+    renderGameField()
+}
+
+initialSetup()
