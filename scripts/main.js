@@ -1,6 +1,6 @@
 const gameState = {
-    startScreen: false,
-    shopScreen: true,
+    startScreen: true,
+    shopScreen: false,
     gameScreen: false,
     winScreen: false,
     loseScreen: false
@@ -31,7 +31,9 @@ function showScreen() {
             populatePrices()
             $('#shopScreen').show()
             break;
-        case 'gameScreen': $('#gameScreen').show()
+        case 'gameScreen': 
+            initialSetup()
+            $('#gameScreen').show()
             break;
         case 'winScreen': $('#winScreen').show()
             break;
@@ -292,22 +294,31 @@ function createGameField() {
     for (var i = 0; i < gameSetup.rows; i++) {
         var row = [];
         for (var k = 0; k < gameSetup.cols; k++) {
-            row.push(Object.assign(gameSquare))
+            let cell = Object.assign({}, gameSquare)
+            let rnd = Math.random()
+            console.log(cell, rnd)
+            if (rnd < .1) {
+                cell.obstacleHere = true                
+            // } else {
+            //     cell.obstacleHere = false
+            }
+            row.push(cell)            
         }
         gameSetup.gameField.push(row)
     }
-    assignObstacles()
+    console.log(gameSetup.gameField)
+    // assignObstacles()
 }
 
-function assignObstacles() {
-    gameSetup.gameField.forEach(function(row) {
-        row.forEach(function(col) {
-            if (Math.random() < 0.1) {
-                col.obstacleHere = true;
-            }
-        })
-    })
-}
+// function assignObstacles() {
+//     gameSetup.gameField.forEach(function(row) {
+//         row.forEach(function(col) {
+//             if (Math.random() < 0.1) {               
+//                 col.obstacleHere = true;
+//             }
+//         })
+//     })
+// }
 
 //needs to be asynch
 function assignUnits() {
@@ -342,4 +353,3 @@ function initialSetup() {
     renderGameField()
 }
 
-initialSetup()
