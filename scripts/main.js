@@ -1,6 +1,6 @@
 const gameState = {
-    startScreen: true,
-    shopScreen: false,
+    startScreen: false,
+    shopScreen: true,
     gameScreen: false,
     winScreen: false,
     loseScreen: false
@@ -18,9 +18,9 @@ function getGameState() {
 
 function changeGameState(input) {
     for (key in gameState) {
-        gameState[key] = false;
-        gameState[input] = true;
+        gameState[key] = false;        
     }
+    gameState[input] = true;
     console.log(gameState)
 }
 
@@ -76,10 +76,31 @@ function soldierBuy() {
         playerOne.moneyLeft -= soldierUnit.price
     } else if (playerTwo.buyActive && playerTwo.moneyLeft >= soldierUnit.price) {
         playerTwo.units.push(Object.assign(soldierUnit))
-        playerTwo.units[playerTwo.units.length-1].id = 'p1-' + playerTwo.units.length
+        playerTwo.units[playerTwo.units.length-1].id = 'p2-' + playerTwo.units.length
         playerTwo.moneyLeft -= soldierUnit.price
     }
     updateAmountsAndMoney()
+}
+
+function soldierRefund() {
+    if (playerOne.buyActive) {
+        for (let i = playerOne.units.length -1; i >= 0; i--) {
+            if (playerOne.units[i].type === "soldier") {                
+                playerOne.units.splice(i, 1)
+                playerOne.moneyLeft += soldierUnit.price
+                break
+            }            
+        }        
+    } else if (playerTwo.buyActive) {
+        for (let i = playerTwo.units.length -1; i >= 0; i--) {
+            if (playerTwo.units[i].type === "soldier") {                
+                playerTwo.units.splice(i, 1)
+                playerTwo.moneyLeft += soldierUnit.price
+                break
+            }            
+        }
+    }
+    updateAmountsAndMoney()    
 }
 
 function cavalryBuy() {
@@ -89,10 +110,31 @@ function cavalryBuy() {
         playerOne.moneyLeft -= cavalryUnit.price
     } else if (playerTwo.buyActive && playerTwo.moneyLeft >= cavalryUnit.price) {
         playerTwo.units.push(Object.assign(cavalryUnit))
-        playerTwo.units[playerTwo.units.length-1].id = 'p1-' + playerTwo.units.length
+        playerTwo.units[playerTwo.units.length-1].id = 'p2-' + playerTwo.units.length
         playerTwo.moneyLeft -= cavalryUnit.price
     }
     updateAmountsAndMoney()
+}
+
+function cavalryRefund() {
+    if (playerOne.buyActive) {
+        for (let i = playerOne.units.length -1; i >= 0; i--) {
+            if (playerOne.units[i].type === "cavalry") {                
+                playerOne.units.splice(i, 1)
+                playerOne.moneyLeft += cavalryUnit.price
+                break
+            }            
+        }        
+    } else if (playerTwo.buyActive) {
+        for (let i = playerTwo.units.length -1; i >= 0; i--) {
+            if (playerTwo.units[i].type === "cavalry") {                
+                playerTwo.units.splice(i, 1)
+                playerTwo.moneyLeft += cavalryUnit.price
+                break
+            }            
+        }
+    }  
+    updateAmountsAndMoney()  
 }
 
 function archerBuy() {
@@ -102,10 +144,31 @@ function archerBuy() {
         playerOne.moneyLeft -= archerUnit.price
     } else if (playerTwo.buyActive && playerTwo.moneyLeft >= archerUnit.price) {
         playerTwo.units.push(Object.assign(archerUnit))
-        playerTwo.units[playerTwo.units.length-1].id = 'p1-' + playerTwo.units.length
+        playerTwo.units[playerTwo.units.length-1].id = 'p2-' + playerTwo.units.length
         playerTwo.moneyLeft -= archerUnit.price
     }
     updateAmountsAndMoney()
+}
+
+function archerRefund() {
+    if (playerOne.buyActive) {
+        for (let i = playerOne.units.length -1; i >= 0; i--) {
+            if (playerOne.units[i].type === "archer") {                
+                playerOne.units.splice(i, 1)
+                playerOne.moneyLeft += archerUnit.price
+                break
+            }            
+        }        
+    } else if (playerTwo.buyActive) {
+        for (let i = playerTwo.units.length -1; i >= 0; i--) {
+            if (playerTwo.units[i].type === "archer") {                
+                playerTwo.units.splice(i, 1)
+                playerTwo.moneyLeft += archerUnit.price
+                break
+            }            
+        }
+    } 
+    updateAmountsAndMoney()   
 }
 
 function cannonBuy() {
@@ -115,10 +178,31 @@ function cannonBuy() {
         playerOne.moneyLeft -= cannonUnit.price
     } else if (playerTwo.buyActive && playerTwo.moneyLeft >= cannonUnit.price) {
         playerTwo.units.push(Object.assign(cannonUnit))
-        playerTwo.units[playerTwo.units.length-1].id = 'p1-' + playerTwo.units.length
+        playerTwo.units[playerTwo.units.length-1].id = 'p2-' + playerTwo.units.length
         playerTwo.moneyLeft -= cannonUnit.price
     }
     updateAmountsAndMoney()
+}
+
+function cannonRefund() {
+    if (playerOne.buyActive) {
+        for (let i = playerOne.units.length -1; i >= 0; i--) {
+            if (playerOne.units[i].type === "cannon") {                
+                playerOne.units.splice(i, 1)
+                playerOne.moneyLeft += cannonUnit.price
+                break
+            }            
+        }        
+    } else if (playerTwo.buyActive) {
+        for (let i = playerTwo.units.length -1; i >= 0; i--) {
+            if (playerTwo.units[i].type === "cannon") {                
+                playerTwo.units.splice(i, 1)
+                playerTwo.moneyLeft += cannonUnit.price
+                break
+            }            
+        }
+    }
+    updateAmountsAndMoney()    
 }
 
 function knightBuy() {
@@ -128,10 +212,31 @@ function knightBuy() {
         playerOne.moneyLeft -= knightUnit.price
     } else if (playerTwo.buyActive && playerTwo.moneyLeft >= knightUnit.price) {
         playerTwo.units.push(Object.assign(knightUnit))
-        playerTwo.units[playerTwo.units.length-1].id = 'p1-' + playerTwo.units.length
+        playerTwo.units[playerTwo.units.length-1].id = 'p2-' + playerTwo.units.length
         playerTwo.moneyLeft -= knightUnit.price
     }
     updateAmountsAndMoney()
+}
+
+function knightRefund() {
+    if (playerOne.buyActive) {
+        for (let i = playerOne.units.length -1; i >= 0; i--) {
+            if (playerOne.units[i].type === "knight") {                
+                playerOne.units.splice(i, 1)
+                playerOne.moneyLeft += knightUnit.price
+                break
+            }            
+        }        
+    } else if (playerTwo.buyActive) {
+        for (let i = playerTwo.units.length -1; i >= 0; i--) {
+            if (playerTwo.units[i].type === "knight") {                
+                playerTwo.units.splice(i, 1)
+                playerTwo.moneyLeft += knightUnit.price
+                break
+            }            
+        }
+    } 
+    updateAmountsAndMoney()   
 }
 
 function updateAmountsAndMoney() {
@@ -157,6 +262,7 @@ function updateAmountsAndMoney() {
     for (key in selected) {
         $('#'+key+'Amt').html(selected[key])
     }
+    console.log(playerOne.units)    
 }
 
 function playerDoneShopping() {

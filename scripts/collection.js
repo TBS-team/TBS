@@ -1,8 +1,8 @@
+/* const = constant */
 const playerOne = {
     moneyLeft: 5000,
     units: [],
     buyActive: true,
-
 }
 
 const playerTwo = {
@@ -81,12 +81,12 @@ const knightUnit = {
     price: 1200,
 }
 
-gameSquare = {
+const gameSquare = {
     unitHere: false,
     obstacleHere: false,
 }
 
-gameSetup = {
+const gameSetup = {
     rows: 20,
     cols: 20,
     gameField: [],
