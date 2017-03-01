@@ -298,27 +298,15 @@ function createGameField() {
             let rnd = Math.random()
             console.log(cell, rnd)
             if (rnd < .1) {
-                cell.obstacleHere = true                
-            // } else {
-            //     cell.obstacleHere = false
+                cell.obstacleHere = true            
             }
             row.push(cell)            
         }
         gameSetup.gameField.push(row)
     }
     console.log(gameSetup.gameField)
-    // assignObstacles()
+    assignUnits()
 }
-
-// function assignObstacles() {
-//     gameSetup.gameField.forEach(function(row) {
-//         row.forEach(function(col) {
-//             if (Math.random() < 0.1) {               
-//                 col.obstacleHere = true;
-//             }
-//         })
-//     })
-// }
 
 //needs to be asynch
 function assignUnits() {
