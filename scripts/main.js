@@ -1,6 +1,6 @@
 const gameState = {
-    startScreen: true,
-    shopScreen: false,
+    startScreen: false,
+    shopScreen: true,
     gameScreen: false,
     winScreen: false,
     loseScreen: false
@@ -73,11 +73,11 @@ function populatePrices() {
 
 function soldierBuy() {
     if (playerOne.buyActive && playerOne.moneyLeft >= soldierUnit.price) {
-        playerOne.units.push(Object.assign(soldierUnit))
+        playerOne.units.push(Object.assign({}, soldierUnit))
         playerOne.units[playerOne.units.length-1].id = 'p1-' + playerOne.units.length
         playerOne.moneyLeft -= soldierUnit.price
     } else if (playerTwo.buyActive && playerTwo.moneyLeft >= soldierUnit.price) {
-        playerTwo.units.push(Object.assign(soldierUnit))
+        playerTwo.units.push(Object.assign({}, soldierUnit))
         playerTwo.units[playerTwo.units.length-1].id = 'p2-' + playerTwo.units.length
         playerTwo.moneyLeft -= soldierUnit.price
     }
@@ -86,7 +86,7 @@ function soldierBuy() {
 
 function soldierRefund() {
     if (playerOne.buyActive) {
-        for (let i = playerOne.units.length -1; i >= 0; i--) {
+        for (var i = playerOne.units.length -1; i >= 0; i--) {
             if (playerOne.units[i].type === "soldier") {                
                 playerOne.units.splice(i, 1)
                 playerOne.moneyLeft += soldierUnit.price
@@ -94,7 +94,7 @@ function soldierRefund() {
             }            
         }        
     } else if (playerTwo.buyActive) {
-        for (let i = playerTwo.units.length -1; i >= 0; i--) {
+        for (var i = playerTwo.units.length -1; i >= 0; i--) {
             if (playerTwo.units[i].type === "soldier") {                
                 playerTwo.units.splice(i, 1)
                 playerTwo.moneyLeft += soldierUnit.price
@@ -107,11 +107,11 @@ function soldierRefund() {
 
 function cavalryBuy() {
     if (playerOne.buyActive && playerOne.moneyLeft >= cavalryUnit.price) {
-        playerOne.units.push(Object.assign(cavalryUnit))
+        playerOne.units.push(Object.assign({}, cavalryUnit))
         playerOne.units[playerOne.units.length-1].id = 'p1-' + playerOne.units.length
         playerOne.moneyLeft -= cavalryUnit.price
     } else if (playerTwo.buyActive && playerTwo.moneyLeft >= cavalryUnit.price) {
-        playerTwo.units.push(Object.assign(cavalryUnit))
+        playerTwo.units.push(Object.assign({}, cavalryUnit))
         playerTwo.units[playerTwo.units.length-1].id = 'p2-' + playerTwo.units.length
         playerTwo.moneyLeft -= cavalryUnit.price
     }
@@ -120,7 +120,7 @@ function cavalryBuy() {
 
 function cavalryRefund() {
     if (playerOne.buyActive) {
-        for (let i = playerOne.units.length -1; i >= 0; i--) {
+        for (var i = playerOne.units.length -1; i >= 0; i--) {
             if (playerOne.units[i].type === "cavalry") {                
                 playerOne.units.splice(i, 1)
                 playerOne.moneyLeft += cavalryUnit.price
@@ -128,7 +128,7 @@ function cavalryRefund() {
             }            
         }        
     } else if (playerTwo.buyActive) {
-        for (let i = playerTwo.units.length -1; i >= 0; i--) {
+        for (var i = playerTwo.units.length -1; i >= 0; i--) {
             if (playerTwo.units[i].type === "cavalry") {                
                 playerTwo.units.splice(i, 1)
                 playerTwo.moneyLeft += cavalryUnit.price
@@ -141,11 +141,11 @@ function cavalryRefund() {
 
 function archerBuy() {
     if (playerOne.buyActive && playerOne.moneyLeft >= archerUnit.price) {
-        playerOne.units.push(Object.assign(archerUnit))
+        playerOne.units.push(Object.assign({}, archerUnit))
         playerOne.units[playerOne.units.length-1].id = 'p1-' + playerOne.units.length
         playerOne.moneyLeft -= archerUnit.price
     } else if (playerTwo.buyActive && playerTwo.moneyLeft >= archerUnit.price) {
-        playerTwo.units.push(Object.assign(archerUnit))
+        playerTwo.units.push(Object.assign({}, archerUnit))
         playerTwo.units[playerTwo.units.length-1].id = 'p2-' + playerTwo.units.length
         playerTwo.moneyLeft -= archerUnit.price
     }
@@ -154,7 +154,7 @@ function archerBuy() {
 
 function archerRefund() {
     if (playerOne.buyActive) {
-        for (let i = playerOne.units.length -1; i >= 0; i--) {
+        for (var i = playerOne.units.length -1; i >= 0; i--) {
             if (playerOne.units[i].type === "archer") {                
                 playerOne.units.splice(i, 1)
                 playerOne.moneyLeft += archerUnit.price
@@ -162,7 +162,7 @@ function archerRefund() {
             }            
         }        
     } else if (playerTwo.buyActive) {
-        for (let i = playerTwo.units.length -1; i >= 0; i--) {
+        for (var i = playerTwo.units.length -1; i >= 0; i--) {
             if (playerTwo.units[i].type === "archer") {                
                 playerTwo.units.splice(i, 1)
                 playerTwo.moneyLeft += archerUnit.price
@@ -175,11 +175,11 @@ function archerRefund() {
 
 function cannonBuy() {
     if (playerOne.buyActive && playerOne.moneyLeft >= cannonUnit.price) {
-        playerOne.units.push(Object.assign(cannonUnit))
+        playerOne.units.push(Object.assign({}, cannonUnit))
         playerOne.units[playerOne.units.length-1].id = 'p1-' + playerOne.units.length
         playerOne.moneyLeft -= cannonUnit.price
     } else if (playerTwo.buyActive && playerTwo.moneyLeft >= cannonUnit.price) {
-        playerTwo.units.push(Object.assign(cannonUnit))
+        playerTwo.units.push(Object.assign({}, cannonUnit))
         playerTwo.units[playerTwo.units.length-1].id = 'p2-' + playerTwo.units.length
         playerTwo.moneyLeft -= cannonUnit.price
     }
@@ -188,7 +188,7 @@ function cannonBuy() {
 
 function cannonRefund() {
     if (playerOne.buyActive) {
-        for (let i = playerOne.units.length -1; i >= 0; i--) {
+        for (var i = playerOne.units.length -1; i >= 0; i--) {
             if (playerOne.units[i].type === "cannon") {                
                 playerOne.units.splice(i, 1)
                 playerOne.moneyLeft += cannonUnit.price
@@ -196,7 +196,7 @@ function cannonRefund() {
             }            
         }        
     } else if (playerTwo.buyActive) {
-        for (let i = playerTwo.units.length -1; i >= 0; i--) {
+        for (var i = playerTwo.units.length -1; i >= 0; i--) {
             if (playerTwo.units[i].type === "cannon") {                
                 playerTwo.units.splice(i, 1)
                 playerTwo.moneyLeft += cannonUnit.price
@@ -209,11 +209,11 @@ function cannonRefund() {
 
 function knightBuy() {
     if (playerOne.buyActive && playerOne.moneyLeft >= knightUnit.price) {
-        playerOne.units.push(Object.assign(knightUnit))
+        playerOne.units.push(Object.assign({}, knightUnit))
         playerOne.units[playerOne.units.length-1].id = 'p1-' + playerOne.units.length
         playerOne.moneyLeft -= knightUnit.price
     } else if (playerTwo.buyActive && playerTwo.moneyLeft >= knightUnit.price) {
-        playerTwo.units.push(Object.assign(knightUnit))
+        playerTwo.units.push(Object.assign({}, knightUnit))
         playerTwo.units[playerTwo.units.length-1].id = 'p2-' + playerTwo.units.length
         playerTwo.moneyLeft -= knightUnit.price
     }
@@ -222,7 +222,7 @@ function knightBuy() {
 
 function knightRefund() {
     if (playerOne.buyActive) {
-        for (let i = playerOne.units.length -1; i >= 0; i--) {
+        for (var i = playerOne.units.length -1; i >= 0; i--) {
             if (playerOne.units[i].type === "knight") {                
                 playerOne.units.splice(i, 1)
                 playerOne.moneyLeft += knightUnit.price
@@ -230,7 +230,7 @@ function knightRefund() {
             }            
         }        
     } else if (playerTwo.buyActive) {
-        for (let i = playerTwo.units.length -1; i >= 0; i--) {
+        for (var i = playerTwo.units.length -1; i >= 0; i--) {
             if (playerTwo.units[i].type === "knight") {                
                 playerTwo.units.splice(i, 1)
                 playerTwo.moneyLeft += knightUnit.price
@@ -294,9 +294,8 @@ function createGameField() {
     for (var i = 0; i < gameSetup.rows; i++) {
         var row = [];
         for (var k = 0; k < gameSetup.cols; k++) {
-            let cell = Object.assign({}, gameSquare)
-            let rnd = Math.random()
-            console.log(cell, rnd)
+            var cell = Object.assign({}, gameSquare)
+            var rnd = Math.random()
             if (rnd < .1) {
                 cell.obstacleHere = true            
             }
@@ -304,19 +303,41 @@ function createGameField() {
         }
         gameSetup.gameField.push(row)
     }
-    console.log(gameSetup.gameField)
-    assignUnits()
+    placeUnits()
 }
 
-//needs to be asynch
-function assignUnits() {
+function placeUnits() {
+    console.log(playerOne.units)
     playerOne.units.forEach(function(unit) {
-        console.log('called')
-        var randomRow = Math.floor((Math.random * 2) + 1)
-        var randomCol = Math.floor((Math.random * 30) + 1)
-        console.log(randomRow, randomCol)
-        gameSetup.gameField[randomRow][randomCol].unitHere = true;
+        placePlayerOneUnits(unit)
     })
+    playerTwo.units.forEach(function(unit) {
+        placePlayerTwoUnits(unit)
+    })
+}
+
+function placePlayerOneUnits(unit) {
+    var row = Math.floor((Math.random() * 3) + 1)
+    var col = Math.floor((Math.random() * 19) + 1)
+    if (!gameSetup.gameField[row][col].unitHere && !gameSetup.gameField[row][col].obstacleHere) {
+        gameSetup.gameField[row][col].unitHere = true
+        gameSetup.gameField[row][col].unitType = unit.type
+        gameSetup.gameField[row][col].unitId = unit.id
+    } else {
+        placePlayerOneUnits(unit)
+    }
+}
+
+function placePlayerTwoUnits(unit) {
+    var row = Math.floor((Math.random() * 3) + 17)
+    var col = Math.floor((Math.random() * 19) + 1)
+    if (!gameSetup.gameField[row][col].unitHere && !gameSetup.gameField[row][col].obstacleHere) {
+        gameSetup.gameField[row][col].unitHere = true
+        gameSetup.gameField[row][col].unitType = unit.type
+        gameSetup.gameField[row][col].unitId = unit.id
+    } else {
+        placePlayerTwoUnits(unit)
+    }
 }
 
 function renderGameField() {
@@ -325,8 +346,9 @@ function renderGameField() {
         row.forEach(function(col, colInd) {
             if (col.obstacleHere) {
                 fieldToRender += '<div class="obstacle cell" id="' + rowInd + '-' + colInd + '"></div>'
-            // } else if (col.unitHere) {
-            //     fieldToRender += '<div class="unit cell" id="' + rowInd + '-' + colInd + '"></div>'
+            } else if (col.unitHere) {
+                console.log(col.unitId)
+                fieldToRender += '<div class="cell unit ' + col.unitId.substr(0,2) + '" id="' + rowInd + '-' + colInd + '"></div>'
             } else {
                 fieldToRender += '<div class="cell" id="' + rowInd + '-' + colInd + '"></div>'
             }

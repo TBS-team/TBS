@@ -84,6 +84,8 @@ const knightUnit = {
 const gameSquare = {
     unitHere: false,
     obstacleHere: false,
+    unitType: null,
+    unitId: null,
 }
 
 const gameSetup = {
