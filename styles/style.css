@@ -71,3 +71,7 @@
 .p2 {
     background-color: #393CE6;
 }
+
+.game-screen button {
+    float: right;
+}

@@ -1,6 +1,6 @@
 const gameState = {
-    startScreen: false,
-    shopScreen: true,
+    startScreen: true,
+    shopScreen: false,
     gameScreen: false,
     winScreen: false,
     loseScreen: false
@@ -21,7 +21,6 @@ function changeGameState(input) {
         gameState[key] = false;        
     }
     gameState[input] = true;
-    console.log(gameState)
 }
 
 function showScreen() {
@@ -264,20 +263,16 @@ function updateAmountsAndMoney() {
     for (key in selected) {
         $('#'+key+'Amt').html(selected[key])
     }
-    console.log(playerOne.units)    
 }
 
 function playerDoneShopping() {
     if (playerOne.buyActive) {
         playerOne.buyActive = false
-        console.log(playerOne)
-        console.log(playerTwo)
         showScreen()
         whichPlayerShops()
         updateAmountsAndMoney()
     } else {
         playerTwo.buyActive = false
-        console.log(playerTwo)
         changeGameState('gameScreen')
         showScreen()
         whichPlayerShops()
@@ -307,7 +302,6 @@ function createGameField() {
 }
 
 function placeUnits() {
-    console.log(playerOne.units)
     playerOne.units.forEach(function(unit) {
         placePlayerOneUnits(unit)
     })
@@ -340,6 +334,10 @@ function placePlayerTwoUnits(unit) {
     }
 }
 
+function selectedCell(cell) {
+    console.log(cell)
+}
+
 function renderGameField() {
     var fieldToRender = '<div class="map">'
     gameSetup.gameField.forEach(function(row, rowInd) {
@@ -347,7 +345,6 @@ function renderGameField() {
             if (col.obstacleHere) {
                 fieldToRender += '<div class="obstacle cell" id="' + rowInd + '-' + colInd + '"></div>'
             } else if (col.unitHere) {
-                console.log(col.unitId)
                 fieldToRender += '<div class="cell unit ' + col.unitId.substr(0,2) + '" id="' + rowInd + '-' + colInd + '"></div>'
             } else {
                 fieldToRender += '<div class="cell" id="' + rowInd + '-' + colInd + '"></div>'
@@ -356,10 +353,15 @@ function renderGameField() {
     })
     fieldToRender += '</div>'
     $('#gameScreen').append(fieldToRender)
+    $('.cell').click(function() {
+        var clickedCell = $(this)
+        selectedCell(clickedCell)
+    })
 }
 
 function initialSetup() {
     createGameField()
     renderGameField()
 }
+
 
